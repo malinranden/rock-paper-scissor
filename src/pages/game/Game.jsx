@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import backgroundImage from '../../images/Clouds.png';
+import './game.module.css';
 
 const choices = ['rock', 'paper', 'scissors'];
 
@@ -64,6 +66,7 @@ const Game = () => {
             marginLeft: 'auto',
             marginRight: 'auto',
             padding: 10,
+        
         };
 
         const resultStyle = {
@@ -71,9 +74,24 @@ const Game = () => {
             fontSize: windowWidth < 600 ? 16 : 18,
         };
 
+        const pageStyle = {
+            minHeight: '100vh',
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            display: 'flex',
+            justifyContent:'center',
+            alignItems: 'flex-start',
+            paddingTop: 50,
+            };
+
+
+
 
 
          return (
+        <div style ={pageStyle}>
         <div style ={containerStyle}>
             <h2>Rock Paper Scissors</h2>
             <div style ={buttonContainerStyle}>
@@ -89,9 +107,16 @@ const Game = () => {
                     <p>Computer's choice: {computerChoice}</p>
                     <h3>{result}</h3>
                     <p>Score - You: {score.player} | Computer: {score.computer}</p>
+               
+                    
+
+
+            
                 </div>
             )}
         </div>
+        </div>
+        
 
     );
 };
