@@ -1,0 +1,42 @@
+.card-container {
+    border: 1px solid black; 
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px black;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    max-width: 250px;
+    display: inline-block;
+    box-sizing: border-box; /* ? */
+}
+.card-container:hover {
+    transform: scale(1.1);
+    /* z-index: 1; */
+}
+/* is this needed? */
+/* .card-container:active {
+    transform: scale(1.1);
+} */
+
+.img-character {
+    max-width: 60%;
+    height: auto;
+    border-radius: 15%;
+    margin-bottom: 10px;
+}
+
+.opponents-background {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.opponents-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-startgame {
+    margin-top: 30px;
+}
