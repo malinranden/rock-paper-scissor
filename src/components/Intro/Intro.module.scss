@@ -1,3 +1,18 @@
 // Tools
 @use '../../styles/utils/vars' as v;
 @use '../../styles/utils/mixins' as m;
+
+.intro {
+    background-color: v.$clr-bg;
+    &__title {}
+
+    &__clouds {
+
+        .back {}
+
+        .mid {}
+
+        front {}
+    }
+
+}

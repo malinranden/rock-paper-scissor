@@ -1,5 +1,6 @@
 import style from './Home.module.css'
 import SignInUp from '../../components/SignInUp/SignInUp';
+import Intro from '../../components/Intro/Intro.jsx'
 
 function Home () {
     return (
@@ -10,7 +11,9 @@ function Home () {
                 alignItems: "center",
                 justifyContent: "center",
                 minHeight: "100vh",
-                width: "100%",}}>
+                width: "100%",
+            }}>
+            <Intro />
             <SignInUp />
         </div>
         </>
