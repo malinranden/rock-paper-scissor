@@ -17,7 +17,7 @@
 .card-container.selected {
     transform: scale(1.1);
     opacity: 100%;
-    background-color: rebeccapurple;
+    background-color: rgb(90, 45, 135);
 }
 
 .img-character {
