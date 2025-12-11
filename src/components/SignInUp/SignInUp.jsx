@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import style from './SignInUp.module.scss'
+import { useNavigate } from 'react-router-dom' // malin
 
 function SignInUp() {
     const [action, setAction] = useState("Sign Up")
@@ -23,6 +24,8 @@ function SignInUp() {
             : alert("Incorrect email or password..")
     }
 
+    // adding navigation to character /Malin
+    const navigate = useNavigate();
 
     return (
 
@@ -80,6 +83,7 @@ function SignInUp() {
                 <button className={
                     action === "Sign In" ? style.white : style.submit} onClick={() => {
                     setAction("Sign In")
+                    navigate("/opponents") //Malin
                 }}>
                     Sign In
                 </button>
