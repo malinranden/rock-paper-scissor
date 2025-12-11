@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom"
-import style from "./Character.module.css"
 import Card from "./Card";
+import Homer from "../assets/images/Homer.png";
+import Lisa from "../assets/images/Lisa.png";
+import Maggie from "../assets/images/Maggie.png"
+import Marge from "../assets/images/Marge.png"
 
 function Character() {
     const [character, setCharchter] = useState([]);
@@ -37,19 +40,19 @@ function Character() {
         let background;
         switch (selectedIndex) {
             case (0):
-                background = "https://cdn.thesimpsonsapi.com/500/character/1.webp";
+                background = Homer;
                 break;
             case (1):
-                background = "";
+                background = Marge;
                 break;
             case (2):
                 background = "https://cdn.pixabay.com/photo/2015/03/01/21/44/bart-655318_1280.png";
                 break;
             case (3):
-                background = "";
+                background = Lisa;
                 break;
             case (4):
-                background = "";
+                background = Maggie;
                 break;
             default:
                 alert("something went wrong")
@@ -57,11 +60,12 @@ function Character() {
             }
         navigate("/game", { state: {background} });
     };
+    
     return (
         <>
-            <div className={style.opponents-background}>
+            <div className="opponents-background">
                 <h1>Choose your opponent!</h1> 
-                <div className={style.opponents-div}>
+                <div className="opponents-div">
                     <Card 
                         id={[0]} // behövs ej...
                         title={character[0]?.name}
@@ -69,6 +73,7 @@ function Character() {
                         age={character[0]?.age}
                         birthdate={character[0]?.birthdate}
                         occupation={character[0]?.occupation}
+                        isSelected={selectedIndex === 0}
                         onClick={() => {setChooseCharacter(true); setSelectedIndex(0);}} 
                     />
                     <Card 
@@ -77,6 +82,7 @@ function Character() {
                         age={character[1]?.age}
                         birthdate={character[1]?.birthdate}
                         occupation={character[1]?.occupation}
+                        isSelected={selectedIndex === 1}
                         onClick={() => {setChooseCharacter(true); setSelectedIndex(1);}}
                     />
                     <Card
@@ -85,6 +91,7 @@ function Character() {
                         age={character[2]?.age}
                         birthdate={character[2]?.birthdate}
                         occupation={character[2]?.occupation}
+                        isSelected={selectedIndex === 2}
                         onClick={() => {setChooseCharacter(true); setSelectedIndex(2);}}
                     />
                     <Card 
@@ -93,6 +100,7 @@ function Character() {
                         age={character[3]?.age}
                         birthdate={character[3]?.birthdate}
                         occupation={character[3]?.occupation}
+                        isSelected={selectedIndex === 3}
                         onClick={() => {setChooseCharacter(true); setSelectedIndex(3);}}
                     />
                     <Card 
@@ -101,10 +109,11 @@ function Character() {
                         age={character[4]?.age}
                         birthdate={character[4]?.birthdate}
                         occupation={character[4]?.occupation}
+                        isSelected={selectedIndex === 4}
                         onClick={() => {setChooseCharacter(true); setSelectedIndex(4);}}
                     />
                 </div>
-                <button className={style.btn-startgame} onClick={openGame}>Start Game</button>
+                <button className="btn-startgame" onClick={openGame}>Start Game</button>
             </div>
         </>
     )
