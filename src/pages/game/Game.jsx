@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import backgroundImage from '../../images/Clouds.png';
-import './game.module.css';
+import  './Game.module.css';
+import { useLocation } from 'react-router-dom';
+
 
 const choices = ['rock', 'paper', 'scissors'];
 
@@ -87,13 +89,23 @@ const Game = () => {
             };
 
 
-
-
-
+      const { state } = useLocation();
+      const bg = state?.bg;
          return (
+            <>
+        <div className="bgimage" 
+         style={{
+            backgroundImage:`url(${bg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center", 
+            }} >
+                </div>
+                
+            
+
         <div style ={pageStyle}>
         <div style ={containerStyle}>
-            <h2>Rock Paper Scissors</h2>
+            <h2 >Rock Paper Scissors</h2>
             <div style ={buttonContainerStyle}>
                 {choices.map((choice) => (
                     <button key={choice} onClick={() => play(choice)} style={buttonStyle}>
@@ -116,10 +128,10 @@ const Game = () => {
             )}
         </div>
         </div>
-        
+        </>
 
     );
-};
+}
 export default Game;
 
 
