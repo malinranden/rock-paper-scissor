@@ -3,7 +3,6 @@ import backgroundImage from '../../images/Clouds.png';
 import './Game.module.css';
 import { useLocation } from 'react-router-dom';
 
-
 const choices = ['rock', 'paper', 'scissors'];
 
 const Game = (style) => {
@@ -88,38 +87,27 @@ const Game = (style) => {
             paddingTop: 50,
             };
 
-        // const bgImage = {
-        //     backgroundImage:`url(${bg})`,
-        //     backgroundSize: "cover",
-        //     backgroundPosition: "center", 
-        //     }
-        // }
-
         const { state } = useLocation();
         const bg = state?.bg;
-         return (
+
+        return (
         <>
-        {/* style={bgImage} */}
-        {/* <div 
-            className='bgImage'
-        >
-        </div> */}
-            <div // adding styling for image and a class /Malin
-            className={style.bgimage}
-            style={{
-                // height: '500px',
-                // width: '500px',
-                backgroundImage:`url(${bg})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
-            ></div>
-                
-            
 
         <div style ={pageStyle}>
         <div style ={containerStyle}>
             <h2 >Rock Paper Scissors</h2>
+
+            <div
+                style={{
+                    height: '400px',
+                    width: '700px',
+                    backgroundImage:`url(${bg})`,
+                    backgroundSize: "contain",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }}>
+            </div>
+
             <div style ={buttonContainerStyle}>
                 {choices.map((choice) => (
                     <button key={choice} onClick={() => play(choice)} style={buttonStyle}>
