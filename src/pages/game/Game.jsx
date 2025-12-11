@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import backgroundImage from '../../images/Clouds.png';
-import  './Game.module.css';
+import './Game.module.css';
 import { useLocation } from 'react-router-dom';
 
 
 const choices = ['rock', 'paper', 'scissors'];
 
-const Game = () => {
+const Game = (style) => {
     const [playerChoice, setPlayerChoice] = useState("");
     const [computerChoice, setComputerChoice] = useState("");
     const [result, setResult] = useState("");
@@ -88,18 +88,32 @@ const Game = () => {
             paddingTop: 50,
             };
 
+        // const bgImage = {
+        //     backgroundImage:`url(${bg})`,
+        //     backgroundSize: "cover",
+        //     backgroundPosition: "center", 
+        //     }
+        // }
 
-      const { state } = useLocation();
-      const bg = state?.bg;
+        const { state } = useLocation();
+        const bg = state?.bg;
          return (
-            <>
-        <div className="bgimage" 
-         style={{
-            backgroundImage:`url(${bg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center", 
-            }} >
-                </div>
+        <>
+        {/* style={bgImage} */}
+        {/* <div 
+            className='bgImage'
+        >
+        </div> */}
+            <div // adding styling for image and a class /Malin
+            className={style.bgimage}
+            style={{
+                // height: '500px',
+                // width: '500px',
+                backgroundImage:`url(${bg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
+            ></div>
                 
             
 
