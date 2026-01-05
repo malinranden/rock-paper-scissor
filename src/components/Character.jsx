@@ -38,9 +38,11 @@ function Character() {
             return;
         }
         let bg;
+        let name;
         switch (selectedIndex) {
             case (0):
-                bg = Homer;
+                bg = Homer,
+                name = "Homie"
                 break;
             case (1):
                 bg = Marge;
@@ -58,7 +60,7 @@ function Character() {
                 alert("something went wrong")
                 return;
             }
-        navigate("/game", { state: {bg} });
+        navigate("/game", { state: {bg, name} });
     };
     
     return (

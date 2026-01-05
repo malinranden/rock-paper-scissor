@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import backgroundImage from '../../images/Clouds.png';
 import './Game.module.css';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
 
 const choices = ['rock', 'paper', 'scissors'];
 
@@ -89,6 +90,9 @@ const Game = (style) => {
 
         const { state } = useLocation();
         const bg = state?.bg;
+        const name = state?.name;
+
+        const newCharacter = useNavigate();
 
         return (
         <>
@@ -118,7 +122,7 @@ const Game = (style) => {
             {playerChoice &&(
                 <div style= {resultStyle}>
                     <p>Your choice: {playerChoice}</p>
-                    <p>Computer's choice: {computerChoice}</p>
+                    <p>Computer's choice {name} : {computerChoice}</p>
                     <h3>{result}</h3>
                     <p>Score - You: {score.player} | Computer: {score.computer}</p>
                
@@ -128,6 +132,12 @@ const Game = (style) => {
             
                 </div>
             )}
+            
+            <button 
+                onClick={() => newCharacter("/opponents")}
+                style={buttonStyle}
+                >Play with another Simpson character</button>
+            {/* style={buttonStyle && {margin: '30px'}} */}
         </div>
         </div>
         </>
