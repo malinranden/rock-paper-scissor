@@ -68,7 +68,9 @@ const Game = (style) => {
             marginLeft: 'auto',
             marginRight: 'auto',
             padding: 10,
-        
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
         };
 
         const resultStyle = {
@@ -87,6 +89,10 @@ const Game = (style) => {
             alignItems: 'flex-start',
             paddingTop: 50,
             };
+
+        // const scoreboardStyle = {
+
+        // };
 
         const { state } = useLocation();
         const bg = state?.bg;
@@ -119,10 +125,18 @@ const Game = (style) => {
                     </button>
                 ))}
             </div>
+            <div style={{
+                width: "400px",
+                height: "250px",
+                border: "solid, black, 1px",
+                borderRadius: 8,
+                backgroundColor: "gray"
+            }}>
+                <h2>Score board</h2>
             {playerChoice &&(
                 <div style= {resultStyle}>
                     <p>Your choice: {playerChoice}</p>
-                    <p>Computer's choice {name} : {computerChoice}</p>
+                    <p>{name}'s choice: {computerChoice}</p>
                     <h3>{result}</h3>
                     <p>Score - You: {score.player} | Computer: {score.computer}</p>
                
@@ -132,12 +146,11 @@ const Game = (style) => {
             
                 </div>
             )}
-            
+            </div>
             <button 
                 onClick={() => newCharacter("/opponents")}
-                style={buttonStyle}
-                >Play with another Simpson character</button>
-            {/* style={buttonStyle && {margin: '30px'}} */}
+                style={buttonStyle}>
+                Change character</button>
         </div>
         </div>
         </>
