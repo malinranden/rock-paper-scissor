@@ -22,6 +22,9 @@ function SignInUp() {
         setSignUpPwd("")
     }
 
+    // adding navigation to character /Malin
+    const navigate = useNavigate();
+
     const signIn = () => {
         const userEmail = localStorage.getItem("email")
         const userPwd = localStorage.getItem("pwd")
