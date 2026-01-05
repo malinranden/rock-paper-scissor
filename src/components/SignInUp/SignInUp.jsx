@@ -6,26 +6,29 @@ function SignInUp() {
     const [action, setAction] = useState("Sign Up")
 
 
-    const [email, setEmail] = useState(" ")
-    const [pwd, setPwd] = useState(" ")
+    const [email, setEmail] = useState("")
+    const [pwd, setPwd] = useState("")
 
     const addStorage = () => {
         localStorage.setItem("email", email)
         localStorage.setItem("pwd", pwd)
-        setEmail(" ")
-        setPwd(" ")
-    }
-
-    const signIn = () => {
-        const userEmail = localStorage.getItem("email")
-        const userPwd = localStorage.getItem("pwd")
-        email === userEmail && pwd === userPwd
-            ? alert("You are Signed In !")
-            : alert("Incorrect email or password..")
+        setEmail("")
+        setPwd("")
     }
 
     // adding navigation to character /Malin
     const navigate = useNavigate();
+
+    const signIn = () => {
+        const userEmail = localStorage.getItem("email")
+        const userPwd = localStorage.getItem("pwd")
+        if (email === userEmail && pwd === userPwd) {
+            alert("You are Signed In !")
+            navigate("/opponents")
+        } else {
+            alert("Incorrect email or password..")
+        }
+    }
 
     return (
 
@@ -57,12 +60,16 @@ function SignInUp() {
                         <input
                             type="email"
                             placeholder="Email..."
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <br />
                         <br />
                         <input
                             type="password"
                             placeholder="Your Password..."
+                            value={pwd}
+                            onChange={(e) => setPwd(e.target.value)}
                         />
                     </div>
                 )}
@@ -83,7 +90,6 @@ function SignInUp() {
                 <button className={
                     action === "Sign In" ? style.white : style.submit} onClick={() => {
                     setAction("Sign In")
-                    navigate("/opponents") //Malin
                 }}>
                     Sign In
                 </button>
