@@ -38,27 +38,33 @@ function Character() {
             return;
         }
         let bg;
-        switch (selectedIndex) {
+        let name;
+        switch (selectedIndex) { // FMI (for my information): if I want to add the name via API i write: name = (character[0]?.name)
             case (0):
-                bg = Homer;
+                bg = Homer,
+                name = "Homer"
                 break;
             case (1):
-                bg = Marge;
+                bg = Marge,
+                name = "Marge"
                 break;
             case (2):
                 bg = "https://cdn.pixabay.com/photo/2015/03/01/21/44/bart-655318_1280.png";
+                name = "Bart"
                 break;
             case (3):
-                bg = Lisa;
+                bg = Lisa,
+                name = "Lisa"
                 break;
             case (4):
                 bg = Maggie;
+                name = "Maggie"
                 break;
             default:
                 alert("something went wrong")
                 return;
             }
-        navigate("/game", { state: {bg} });
+        navigate("/game", { state: {bg, name} });
     };
     
     return (

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import backgroundImage from '../../images/Clouds.png';
 import './Game.module.css';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
 
 const choices = ['rock', 'paper', 'scissors'];
 
@@ -67,7 +68,9 @@ const Game = (style) => {
             marginLeft: 'auto',
             marginRight: 'auto',
             padding: 10,
-        
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
         };
 
         const resultStyle = {
@@ -87,8 +90,15 @@ const Game = (style) => {
             paddingTop: 50,
             };
 
+        // const scoreboardStyle = {
+
+        // };
+
         const { state } = useLocation();
         const bg = state?.bg;
+        const name = state?.name;
+
+        const newCharacter = useNavigate();
 
         return (
         <>
@@ -115,10 +125,18 @@ const Game = (style) => {
                     </button>
                 ))}
             </div>
+            <div style={{ // this is the score board 
+                width: "400px",
+                height: "250px",
+                border: "solid, black, 1px",
+                borderRadius: 8,
+                backgroundColor: "gray"
+            }}>
+                <h2>Score board</h2>
             {playerChoice &&(
                 <div style= {resultStyle}>
                     <p>Your choice: {playerChoice}</p>
-                    <p>Computer's choice: {computerChoice}</p>
+                    <p>{name}'s choice: {computerChoice}</p>
                     <h3>{result}</h3>
                     <p>Score - You: {score.player} | Computer: {score.computer}</p>
                
@@ -128,6 +146,13 @@ const Game = (style) => {
             
                 </div>
             )}
+            </div>
+
+            <button 
+                onClick={() => newCharacter("/opponents")}
+                style={buttonStyle}>
+                Change character</button>
+
         </div>
         </div>
         </>
