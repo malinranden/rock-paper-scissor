@@ -125,7 +125,7 @@ const Game = (style) => {
                     </button>
                 ))}
             </div>
-            <div style={{
+            <div style={{ // this is the score board 
                 width: "400px",
                 height: "250px",
                 border: "solid, black, 1px",
@@ -147,10 +147,12 @@ const Game = (style) => {
                 </div>
             )}
             </div>
+
             <button 
                 onClick={() => newCharacter("/opponents")}
                 style={buttonStyle}>
                 Change character</button>
+
         </div>
         </div>
         </>
