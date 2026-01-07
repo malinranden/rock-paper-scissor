@@ -37,7 +37,7 @@ const Game = (style) => {
 
         } else {
 
-            setResult("Computer wins!");
+            setResult(`${name} wins!`);
             setScore({...score, computer: score.computer + 1});
 
         } 
