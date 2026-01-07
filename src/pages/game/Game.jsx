@@ -61,25 +61,8 @@ const Game = (style) => {
             margin: windowWidth < 600 ? '5px 0' : '0 10px',
         };
 
-        const containerStyle = {
-            textAlign: 'center',
-            marginTop: 50,
-            maxWidth: 800,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            padding: 10,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-        };
-
-        const resultStyle = {
-            marginTop: 20,
-            fontSize: windowWidth < 600 ? 16 : 18,
-        };
-
         const pageStyle = {
-            minHeight: '100vh',
+            minHeight: '100vh', // i added this one
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -87,8 +70,30 @@ const Game = (style) => {
             display: 'flex',
             justifyContent:'center',
             alignItems: 'flex-start',
-            paddingTop: 50,
+            // paddingTop: 50,
             };
+
+        const containerStyle = {
+            textAlign: 'center',
+            marginTop: 0,
+            maxWidth: 800,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            padding: 10,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: 'center',
+            minHeight: '100vh',
+            boxSizing: 'border-box',
+        };
+
+        const resultStyle = {
+            marginTop: 0,
+            fontSize: windowWidth < 600 ? 16 : 18,
+        };
+
+
 
         // const scoreboardStyle = {
 
