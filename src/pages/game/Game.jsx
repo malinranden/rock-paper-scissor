@@ -51,6 +51,7 @@ const Game = (style) => {
             alignItems: 'center',
             gap: windowWidth < 600 ? 10 : 20,
             marginTop: 20,
+            marginBottom: windowWidth < 600 ? 30 : 50,
         };
 
         const buttonStyle = {
@@ -63,6 +64,7 @@ const Game = (style) => {
 
         const pageStyle = {
             minHeight: '100vh', // i added this one
+            // width: '100%',
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -76,7 +78,7 @@ const Game = (style) => {
         const containerStyle = {
             textAlign: 'center',
             marginTop: 0,
-            maxWidth: 800,
+            // maxWidth: 800,
             marginLeft: 'auto',
             marginRight: 'auto',
             padding: 10,
@@ -86,6 +88,7 @@ const Game = (style) => {
             justifyContent: 'center',
             minHeight: '100vh',
             boxSizing: 'border-box',
+            overflow: 'hidden',
         };
 
         const resultStyle = {
@@ -93,7 +96,25 @@ const Game = (style) => {
             fontSize: windowWidth < 600 ? 16 : 18,
         };
 
+        const scoreStyle = {
+            display: 'flex',
+            flexDirection: 'row',
+            width: '500px',
+            fontSize: 20,
+        }
 
+        const yourscoreStyle = {
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            minWidth: '100px',
+        }
+        const opponentscoreStyle = {
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            minWidth: '120px',
+        }
 
         // const scoreboardStyle = {
 
@@ -110,18 +131,29 @@ const Game = (style) => {
 
         <div style ={pageStyle}>
         <div style ={containerStyle}>
-            <h2 >Rock Paper Scissors</h2>
+            <h1>Rock Paper Scissors</h1>
 
-            <div
-                style={{
-                    height: '400px',
-                    width: '700px',
-                    backgroundImage:`url(${bg})`,
-                    backgroundSize: "contain",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                }}>
+            <div className='image-and-score' style={scoreStyle}>
+                <div className='yourscore' style={yourscoreStyle}>
+                    <p>You: <br/> {score.player}</p>
+                    <p className='yourchoice'>Your choice: {playerChoice}</p>
+                </div>
+                <div 
+                    style={{
+                        height: '400px',
+                        width: '700px',
+                        backgroundImage:`url(${bg})`,
+                        backgroundSize: "contain",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                    }}>
+                </div>
+                <div className='opponenentscore' style={opponentscoreStyle}>
+                    <p>{name}: <br/> {score.computer}</p>
+                    <p>{name}'s choice: {computerChoice}</p>
+                </div>
             </div>
+            <h3>{result}</h3>
 
             <div style ={buttonContainerStyle}>
                 {choices.map((choice) => (
@@ -130,33 +162,13 @@ const Game = (style) => {
                     </button>
                 ))}
             </div>
-            <div style={{ // this is the score board 
-                width: "400px",
-                height: "250px",
-                border: "solid, black, 1px",
-                borderRadius: 8,
-                backgroundColor: "gray"
-            }}>
-                <h2>Score board</h2>
-            {playerChoice &&(
-                <div style= {resultStyle}>
-                    <p>Your choice: {playerChoice}</p>
-                    <p>{name}'s choice: {computerChoice}</p>
-                    <h3>{result}</h3>
-                    <p>Score - You: {score.player} | Computer: {score.computer}</p>
-               
-                    
-
-
-            
-                </div>
-            )}
-            </div>
 
             <button 
-                onClick={() => newCharacter("/opponents")}
-                style={buttonStyle}>
-                Change character</button>
+                onClick={() => newCharacter("/opponents")} 
+                style={{...buttonStyle,  backgroundColor:'#6ba1e4ff', borderRadius:'40px'}}
+                className='btn-change'>
+                Change character
+            </button>
 
         </div>
         </div>
