@@ -93,10 +93,10 @@
     }
     .card-container:hover {
         transform: scale(1.05);
-        background-color: #01a7d0;
+        background-color: #8dc2ff;
     }
     .card-container.selected {
         transform: scale(1.05);
-        background-color: #01a7d0;
+        background-color: #8dc2ff;
     }
 }
