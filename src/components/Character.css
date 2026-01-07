@@ -26,6 +26,7 @@
     overflow: hidden;
     background-color: #008baf;
     background-color: #71abed;
+    background-color: #64bcf6;
 }
 
 .card-container > p {
@@ -39,6 +40,8 @@
 .card-container:hover {
     transform: scale(1.05);
     background-color: #8dc2ff;
+    background-color: rgb(98, 181, 237);
+    background-color: #64bcf6;
 }
 .card-container.selected {
     transform: scale(1.1);
@@ -47,6 +50,8 @@
     animation: bounce 380ms ease-out;
     background-color: #fdf497;
     background-color: #bcdfc6;
+    background-color: #8dc2ff;
+    background-color: #91d3ff;
 }
 .card-container:active {
     
