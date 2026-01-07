@@ -77,8 +77,6 @@ function Character() {
         navigate("/game", { state: {bg, name} });
     };
 
-
-    //här
     const buttonStyle = {
         padding: windowWidth < 600 ? '10px 20px' : '15px 30px',
         fontSize: windowWidth < 600 ? 16 : 20,
