@@ -1,3 +1,10 @@
+.opponents-background {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .card-container {
     border: 1px solid black; 
     border-radius: 10px;
@@ -6,9 +13,26 @@
     margin: 10px;
     text-align: center;
     max-width: 250px;
+    width: 100%;
+    min-height: 400px;
+    height: 100%;
     display: inline-block;
     box-sizing: border-box; /* ? */
+    overflow: hidden;
+    
 }
+/* .card-container > p {
+    margin: 10px;
+    text-align: left;
+} */
+.card-container > p::first-letter {
+    font-size: 25px;
+}
+/* .card-container > p > span {
+    
+    font-size: 20px;
+    
+} */
 .card-container:hover {
     transform: scale(1.05);
     /* opacity: 80%; */
@@ -27,18 +51,16 @@
     margin-bottom: 10px;
 }
 
-.opponents-background {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 .opponents-div {
+    max-width: fit-content;
+    width: 100%;
+    /* min-height: 60%; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
 }
 
-.btn-startgame {
+/* .btn-startgame {
     margin-top: 30px;
-}
+} */
