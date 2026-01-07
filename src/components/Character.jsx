@@ -28,9 +28,19 @@ function Character() {
     };
     useEffect(() => {fetchData();}, []);
 
+    //här
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
     const [chooseCharacter, setChooseCharacter] = useState(false);
     const navigate = useNavigate();
     const [selectedIndex, setSelectedIndex] = useState(null);
+
+    //här
+        useEffect (() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const openGame = () => {
         if (!chooseCharacter) {
@@ -66,7 +76,16 @@ function Character() {
             }
         navigate("/game", { state: {bg, name} });
     };
+
+    const buttonStyle = {
+        padding: windowWidth < 600 ? '10px 20px' : '15px 30px',
+        fontSize: windowWidth < 600 ? 16 : 20,
+        cursor: 'pointer',
+        borderRadius: 8,
+        margin: windowWidth < 600 ? '5px 0' : '0 10px',
+    };
     
+
     return (
         <>
             <div className="opponents-background">
@@ -119,7 +138,8 @@ function Character() {
                         onClick={() => {setChooseCharacter(true); setSelectedIndex(4);}}
                     />
                 </div>
-                <button className="btn-startgame" onClick={openGame}>Start Game</button>
+                <button className="btn-startgame" onClick={openGame}
+                    style={buttonStyle}>Start Game</button>
             </div>
         </>
     )
