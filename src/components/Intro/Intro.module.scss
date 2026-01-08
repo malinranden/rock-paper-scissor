@@ -1,18 +1,370 @@
+// remove display:none title and signInUp
+// Fill up alt="" description for all imgs
+
 // Tools
 @use '../../styles/utils/vars' as v;
 @use '../../styles/utils/mixins' as m;
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+}
 .intro {
-    background-color: v.$clr-bg;
-    &__title {}
+    animation: intro-fadeIn 2s ease-in forwards;
+    // border: 5px solid rgb(26, 255, 0);
+    width: 100vw;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    min-width: 300px;
+}
 
-    &__clouds {
+.grid {
+    width: 100%;
+    height: 100vh;    
+    display: grid;
+    margin: 0;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    // debugging
+    background-image:
+    linear-gradient(to right, rgba(255,255,255,.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.15) 1px, transparent 1px);
+    background-size: calc(100% / 12) calc(100% / 12);
 
-        .back {}
+}
 
-        .mid {}
+// TITLE
+.grid-title {
+    grid-area: 4 / 4 / 7 / 10;
+    // outline: 2px solid red;
+    width: 60%;
+    animation: title-slide -1s ease-in forwards;
+    animation-delay: 6s;
+    place-self: center;
+    text-align: center;
+}
 
-        front {}
+.grid-title--h1 {
+    // border: 2px solid red;
+    animation:
+        title-float 6s ease-in-out infinite,
+        title-fadeIn 2s ease-in forwards;
+    font-size: clamp(24px, 4vw, 56px);
+    margin: 0;
+    text-shadow: 1px 1px grey;
+}
+
+// TOP LEFT
+// A1
+.cloud-a1 {
+    animation: cloud-drift-upL 8s ease-in-out  ;
+    will-change: transform;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed yellow; 
+    grid-area: 1 / 1 / 4 / 7;
+}
+.cloud--img-a1 { 
+    // background: rgba(255, 255, 0, 0.25);
+    display: block;
+    height: auto;
+    width: 100%;
+    transform: translateX(-10%) translateY(-2%);
+}
+// A2
+.cloud-a2 {
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed yellow;
+    grid-area: 3 / 3 / 6 / 6;
+}
+.cloud--img-a2 {
+    // background: rgba(255, 255, 0, 0.25);
+    width: 90%;
+    // transform: translateX(-70%) translateY(-15%);
+}
+// A3
+.cloud-a3 {
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed yellow;
+    grid-area: 2 / 1 / 6 / 4;
+}
+.cloud--img-a3 { 
+    // background:  rgba(255, 255, 0, 0.25);
+    width: 90%;
+}
+
+// TOP RIGHT
+// B1
+.cloud-b1 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed rgb(106, 0, 255);
+    grid-area: 1 / 9 / 6 / 13;
+}
+.cloud--img-b1 { 
+    // background: rgba(106, 0, 255, 0.55);
+    width: 80%;
+    // transform: translateX(-5%) translateY(-15%);
+}
+// B2
+.cloud-b2 {
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed rgb(106, 0, 255);
+    grid-area: 1/ 10 / 5 / 13;
+}
+.cloud--img-b2 { 
+    // background: rgba(106, 0, 255, 0.55);
+    width: 60%;
+    transform: translateY(-20%) translateX(20%);
+}
+
+// MID LEFT
+// C1
+.cloud-c1 {
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed rgba(255, 0, 119);
+    grid-area: 6 / 2 / 9 / 5;
+}
+.cloud--img-c1 { 
+    // background: rgba(255, 0, 119, 0.484);
+    width: 95%;
+    // transform: translateX(25vw) translateY(-2vw);
+}
+// C2
+.cloud-c2 {
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed rgba(255, 0, 119);
+    grid-area: 7 / 1 / 10 / 5;
+}
+.cloud--img-c2 { 
+    // background: rgba(255, 0, 119, 0.566);
+    width: 80%;
+}
+
+// MID RIGHT
+// D1
+.cloud-d1 {
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed rgba(21, 255, 0);
+    grid-area: 6 / 10 / 9 / 13;
+}
+.cloud--img-d1 { 
+    // background: rgba(21, 255, 0, 0.639);
+    width: 70%;
+}
+// D2
+.cloud-d2 {
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed rgba(21, 255, 0);
+    grid-area: 5 / 8 / 8 / 13;
+}
+.cloud--img-d2 { 
+    // background: rgba(21, 255, 0, 0.562);
+    width: 100%;
+    // transform: translateX(30%) translateY(23%);
+
+}
+
+// BOTTOM LEFT
+// E1
+.cloud-e1 {
+    animation: cloud-drift-downL 8s ease-in-out  ;
+    will-change: transform;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end; 
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed rgba(0, 8, 225);
+    grid-area: 10 / 1 / 13 / 6;
+}
+.cloud--img-e1 { 
+    // background: rgba(0, 8, 255, 0.338);
+    width: 135%;
+    transform: translateX(-32%) rotateY(-180deg);
+}
+// E2
+.cloud-e2 {
+    overflow: visible;
+    position: relative;
+    // outlisne: 2px dashed rgba(0, 8, 225);
+    grid-area: 9 / 5 / 11 / 7;
+}
+.cloud--img-e2 { 
+    // background: rgba(0, 8, 255, 0.338);
+    width:85%;
+}
+
+// BOTTOM RIGHT
+// F1
+.cloud-f1 {
+    animation: cloud-drift-downR 8s ease-in-out  ;
+    will-change: transform;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end; 
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed rgba(251, 0, 255);
+    grid-area: 9 / 7 / 13 / 13;
+}
+.cloud--img-f1 { 
+    // background:  rgba(251, 0, 255, 0.516);
+    width: 100%;
+    transform: translateX(15%) translateY(10%);
+}
+// F2
+.cloud-f2 {
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed rgba(251, 0, 255);
+    grid-area: 7 / 11 / 10 / 13;
+}
+.cloud--img-f2 { 
+    // background: rgba(251, 0, 255, 0.516);
+    width: 100%;
+    transform: translateX(15%) translateY(10%);
+
+
+}
+// CENTER
+.cloud-center {
+    animation: cloud-zoomIn 1.5s ease-in forwards;
+    animation-delay: 2s;
+    overflow: visible;
+    position: relative;
+    // outline: 2px dashed rgba(255,0 ,0);
+    grid-area: 2 / 4 / 8 / 11;
+}
+.cloud--img-center { 
+    // background: rgba(255, 0, 0, 0.338);
+    width: 100%;
+}
+
+.cloud {
+  position: relative;
+  display: block;
+  height: auto;
+}
+
+/* Make wrappers hold final state */
+.cloud-a1 { animation: cloud-drift-upL 8s ease-in-out forwards; }
+.cloud-e1 { animation: cloud-drift-downL 8s ease-in-out forwards; }
+.cloud-f1 { animation: cloud-drift-downR 8s ease-in-out forwards; }
+
+.cloud-a2,
+.cloud-a3,
+.cloud-c1,
+.cloud-c2,
+.cloud-e2 { animation: cloud-drift-left 8s ease-in-out forwards; }
+
+.cloud-d1,
+.cloud-f2,
+.cloud-d2 { animation: cloud-drift-right 8s ease-in-out forwards; }
+
+.cloud-b1,
+.cloud-b2 { animation: cloud-drift-upR 8s ease-in-out forwards; }
+
+/* One run only */
+.cloud-a1, .cloud-e1, .cloud-f1,
+.cloud-a2, .cloud-a3, .cloud-c1, .cloud-c2, .cloud-e2,
+.cloud-d1, .cloud-f2, .cloud-d2,
+.cloud-b1, .cloud-b2 {
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.cloud--front {
+    animation-duration: 4s;
+    z-index: 3;
+}
+
+.cloud--mid {
+    z-index: 2;
+}
+
+.cloud--back {
+    animation-duration: 6s;
+    z-index: 1;
+}
+
+@keyframes cloud-drift-left {
+    to {
+         transform: translateX(-50%);
+        }
+}
+
+@keyframes cloud-drift-right {
+    to { 
+        transform: translateX(50px);
     }
+}
+
+@keyframes cloud-drift-upL {
+    to { 
+        transform: translate(-40px, -25px);
+    }
+}
+
+@keyframes cloud-drift-upR {
+    to { 
+        transform: translate(40px, -25px);
+    }
+}
+
+@keyframes cloud-drift-downL {
+    to { 
+        transform: translate(-40px, 25px);
+    }
+}
+
+@keyframes cloud-drift-downR {
+    to { 
+        transform: translate(40px, 25px);
+    }
+}
+
+@keyframes cloud-zoomIn {
+    0% { transform: scale(1); opacity: 1}
+    50% { transform: scale(5); opacity: 1}
+    100% { transform: scale(7); opacity: 0}
+}
+
+@keyframes intro-fadeIn {
+    0% { opacity: 0}
+    50% { opacity: 0.5}
+    100% { opacity: 1}
+}
+
+@keyframes title-fadeIn {
+    from { opacity: 0;}
+    to { opacity: 1; }
+}
+
+@keyframes title-float {
+    0% { transform: translateY(0)}
+    50% { transform: translateY(-10px)}
+    100% { transform: translateY(0)}
+}
+
+@keyframes title-slide {
+    to {
+         transform: translateY(-130px)
+        }
 
 }

@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom' // malin
 function SignInUp() {
     const [action, setAction] = useState("Sign Up")
 
-   
-
     const [signUpMail, setSignUpMail] = useState("")
     const [signInMail, setSignInMail] = useState("")
     const [signUpPwd, setSignUpPwd] = useState("")
@@ -14,25 +12,67 @@ function SignInUp() {
     
     // adding navigation to character
     const navigate = useNavigate();
-
-    const addStorage = () => {
-        localStorage.setItem("email", signUpMail.trim())
-        localStorage.setItem("pwd", signUpPwd)
-        setSignUpMail("")
-        setSignUpPwd("")
+    const getUsers = () => {
+        const rawInput = localStorage.getItem("users")
+        return rawInput ? JSON.parse(rawInput) : []
     }
 
     const signIn = () => {
-        const userEmail = localStorage.getItem("email")
-        const userPwd = localStorage.getItem("pwd")
+        const users = getUsers();
+        const email = signInMail.trim()
+        const pwd = signInPwd
 
-        if (signInMail.trim() === userEmail && signInPwd === userPwd) {
-            alert("You are Signed In !")
-            navigate("/opponents") 
-        } else {
-            alert("Incorrect email or password..") 
+        if (!email || !pwd) {
+            alert("Please enter email and password.")
+            return
         }
-    }
+
+        const match = users.find(
+            u => u.email === email && u.pwd === pwd
+        );
+
+        if (!match) {
+            alert("Wrong email or password");
+            return;
+        }
+
+        localStorage.setItem("currentUser", match.email);
+        setSignInMail("");
+        setSignInPwd("");
+        navigate("/opponents");
+        };
+
+
+    const signUp = () => {
+        const users = getUsers();
+        const email = signUpMail.trim();
+        const pwd = signUpPwd;
+
+        if (!email || !pwd) {
+        alert("Please enter email and password.");
+        return;
+        }
+
+        if (users.some((u) => u.email === email)) {
+        alert("You already have an account! Please Sign In.");
+        return;
+        }
+
+        users.push({ email, pwd });
+
+        localStorage.setItem("users", JSON.stringify(users));
+
+        setSignUpMail("");
+        setSignUpPwd("");
+
+        const startGame = confirm(
+        "You are now Signed Up! Would you like to start the game?"
+        );
+        if (startGame) {
+        localStorage.setItem("currentUser", email);
+        navigate("/opponents");
+        }
+    };
 
     const switchMode = (mode) => {
         setAction(mode)
@@ -54,7 +94,7 @@ function SignInUp() {
                 onSubmit={(e) => {
                     e.preventDefault()
                     if (isSignUp)
-                        addStorage()
+                        signUp()
                     else
                         signIn()
                 }}

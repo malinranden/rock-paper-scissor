@@ -10,6 +10,7 @@
     max-width: v.$sp_500;
     width: 100%;
     min-height: auto;
+    display: none;
 
     &__input {
         @include m.clickable;
