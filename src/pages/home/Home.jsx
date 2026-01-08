@@ -1,13 +1,16 @@
+import {useState} from 'react'
 import style from './Home.module.scss'
-import SignInUp from '../../components/SignInUp/SignInUp'
 import Intro from '../../components/Intro/Intro.jsx'
+import SignInUp from '../../components/SignInUp/SignInUp'
+
 
 function Home () {
+
     return (
         <>
             <div className={style.container}>
-                <Intro />
-                <SignInUp />
+                <Intro onIntroDone={() => setShowSignIn(true)}/>
+                {showSignIn && <SignInUp />}
             </div>
         </>
     )

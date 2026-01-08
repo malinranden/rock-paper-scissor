@@ -28,20 +28,21 @@ html, body {
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
     // debugging
-    background-image:
-    linear-gradient(to right, rgba(255,255,255,.15) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.15) 1px, transparent 1px);
-    background-size: calc(100% / 12) calc(100% / 12);
+    // background-image:
+    // linear-gradient(to right, rgba(255,255,255,.15) 1px, transparent 1px),
+    // linear-gradient(to bottom, rgba(255,255,255,.15) 1px, transparent 1px);
+    // background-size: calc(100% / 12) calc(100% / 12);
 
 }
 
 // TITLE
 .grid-title {
+    position: relative;
     grid-area: 4 / 4 / 7 / 10;
     // outline: 2px solid red;
     width: 60%;
-    animation: title-slide -1s ease-in forwards;
-    animation-delay: 6s;
+    // animation: title-slide -1s ease-in forwards;
+    // animation-delay: 6s;
     place-self: center;
     text-align: center;
 }
@@ -53,7 +54,14 @@ html, body {
         title-fadeIn 2s ease-in forwards;
     font-size: clamp(24px, 4vw, 56px);
     margin: 0;
-    text-shadow: 1px 1px grey;
+    text-shadow: 1px 1px 1px 1px black;
+}
+
+.grid-signin {
+  grid-area: 7 / 4 / 11 / 8;
+  display: grid;
+  place-items: center;
+  z-index: 50;
 }
 
 // TOP LEFT
@@ -362,9 +370,9 @@ html, body {
     100% { transform: translateY(0)}
 }
 
-@keyframes title-slide {
-    to {
-         transform: translateY(-130px)
-        }
+// @keyframes title-slide {
+//     to {
+//          transform: translateY(-130px)
+//         }
 
-}
+// }

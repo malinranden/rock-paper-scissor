@@ -86,7 +86,7 @@ function SignInUp() {
 
     return (
 
-        <div className={style.container}>
+        <div className={`${style.card} ${style.signin}`}>
             <h1>{action}</h1>
         
             <form 
@@ -140,7 +140,8 @@ function SignInUp() {
                 </div>
             )}
             
-            <button type='submit'>Submit</button>
+            <button type="submit" className={style.submit}>Submit</button>
+
         </form>
 
             <div className={style.container__btn}>
