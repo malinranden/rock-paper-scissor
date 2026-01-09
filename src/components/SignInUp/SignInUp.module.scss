@@ -71,6 +71,12 @@ Grid areas
   justify-items: center;
 }
 
+.card input::placeholder {
+  color: rgba(255, 255, 0, 0.7);
+  text-shadow: 1px 1px black;
+  letter-spacing: 0.1em;
+}
+
 .input-sUp,
 .input-sIn {
   width: 100%;
@@ -110,16 +116,6 @@ Grid areas
 Toggle buttons
 ***/
 
-// .submit{
-//   background: inherit;
-//   font-size: v.$sp_16;
-//   border-radius: v.$sp_20;
-//   width: v.$sp_100;
-//   height: v.$sp_50;
-//   color: transparent;
-//   text-shadow: 1px 1px 1px black;
-
-// }
 .toggleBtn,
 .submit {
   @include m.clickable;
