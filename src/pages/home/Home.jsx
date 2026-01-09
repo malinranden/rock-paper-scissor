@@ -9,8 +9,7 @@ function Home () {
     return (
         <>
             <div className={style.container}>
-                <Intro onIntroDone={() => setShowSignIn(true)}/>
-                {showSignIn && <SignInUp />}
+                <Intro />
             </div>
         </>
     )

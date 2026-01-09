@@ -1,34 +1,134 @@
-// Tools
+/***
+Tools
+***/
 @use '../../styles/utils/vars' as v;
 @use '../../styles/utils/mixins' as m;
 
+/***
+Card
+***/
 .card {
-  background: rgba(255,255,255,0.35);
-  border: 2px solid rgba(255,255,255,0.35);
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.35);
   border-radius: v.$sp_50;
+
   padding: v.$sp_20;
-  width: 90%;
+  width: min(92vw, v.$sp_500);
   height: auto;
-  display: flex;
-  flex-direction: column;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, minmax(0, 1fr));
   gap: v.$sp_10;
+
+//   /* Debugging (kept if you want it) */
+//   background-image:
+//     linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+//     linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+//   background-size: calc(100% / 3) calc(100% / 6);
 }
 
-.container__input {
-  @include m.clickable;
-}
-
-.container__btn {
-  @include m.flex;
-  gap: v.$sp_10;
-}
-
-/* fade-in */
+/***
+Fade-in
+***/
 .signin {
   opacity: 0;
-  animation: signin-fadeIn 1.5s ease-out forwards;
+  animation: signin-fadeIn 2.5s ease-out forwards;
 }
 
 @keyframes signin-fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
+}
+
+/***
+Grid areas
+***/
+.grid-title {
+  grid-area: 1 / 1 / 2 / 4;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.grid-title--h1 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 56px);
+  text-shadow: 1px 1px 1px 1px black;
+}
+
+.formArea {
+  grid-area: 2 / 1 / 5 / 4;
+  display: grid;
+  place-items: center;
+}
+
+.container__input {
+  width: 100%;
+  display: grid;
+  gap: v.$sp_10;
+  justify-items: center;
+}
+
+.input-sUp,
+.input-sIn {
+  width: 100%;
+  display: grid;
+  gap: v.$sp_10;
+  justify-items: center;
+}
+
+.input-sUp input,
+.input-sIn input {
+  width: min(90%, 420px);
+  padding: v.$sp_10;
+  border-radius: v.$sp_10;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.25);
+  color: inherit;
+}
+
+.container__input button {
+  width: min(60%, 220px);
+}
+
+.container__btn {
+  grid-area: 5 / 1 / 7 / 4;
+  display: grid;
+  place-items: center;
+  gap: v.$sp_10;
+}
+
+.container__btn>* {
+  display: flex;
+  gap: v.$sp_10;
+}
+
+/***
+Toggle buttons
+***/
+.toggleBtn {
+  @include m.clickable;
+  @include m.hover;
+
+  background: transparent;
+  color: inherit;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+
+  font-size: v.$sp_16;
+  border-radius: v.$sp_20;
+  width: v.$sp_100;
+  height: v.$sp_50;
+
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.toggleBtn:hover {
+  background: transparent;
+}
+
+.toggleBtn--active {
+  background: v.$clr-txt;
+  color: v.$clr-bg;
 }
