@@ -18,7 +18,7 @@ function Intro() {
   const [showSignIn, setShowSignIn] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSignIn(true), 6000)
+    const timer = setTimeout(() => setShowSignIn(true), 6700)
     return () => clearTimeout(timer)
   }, [])
 

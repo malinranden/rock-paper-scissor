@@ -41,6 +41,10 @@ Grid
     grid-template-rows: repeat(12, 1fr);
 }
 
+.grid>* {
+    position: relative;
+}
+
 /***
 Title
 ***/
@@ -50,6 +54,7 @@ Title
     width: 60%;
     place-self: center;
     text-align: center;
+    z-index: 1;
 }
 
 .grid-title--h1 {
@@ -79,13 +84,11 @@ Media
 @media (max-width: 768px) {
     .grid-title {
         grid-area: 3 / 1 / 6 / -1;
-        /* FIX: span full width on small screens */
         width: 92%;
     }
 
     .grid-signin {
         grid-area: 6 / 1 / 13 / -1;
-        /* FIX: keep centered below title */
     }
 }
 

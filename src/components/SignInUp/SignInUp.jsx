@@ -1,5 +1,3 @@
-/* SignInUp.jsx */
-
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import style from './SignInUp.module.scss'
@@ -18,7 +16,7 @@ function SignInUp() {
   const navigate = useNavigate()
 
   /***
-  Storage helper
+    Helper
   ***/
   const getUsers = () => {
     const rawInput = localStorage.getItem("users")
