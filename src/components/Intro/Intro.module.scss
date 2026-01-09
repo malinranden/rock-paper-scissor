@@ -78,6 +78,27 @@ Sign-in
     z-index: 1;
 }
 
+.cloud-a1,
+.cloud-a2,
+.cloud-a3,
+.cloud-b1,
+.cloud-b2,
+.cloud-c1,
+.cloud-c2,
+.cloud-d1,
+.cloud-d2,
+.cloud-e1,
+.cloud-e2,
+.cloud-f1,
+.cloud-f2,
+.cloud-center {
+    pointer-events: none;
+}
+
+.grid-signin {
+    pointer-events: auto;
+}
+
 /***
 Media
 ***/
